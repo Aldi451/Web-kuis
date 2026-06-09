@@ -1,0 +1,13 @@
+# Database
+quiz.db
+*.db
+*.sqlite3
+
+# Python Cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment / Logs
+.env
+*.log

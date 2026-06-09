@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peserta Portal - Host vs Client Quiz</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <!-- JOIN ROOM VIEW -->
+    <div id="join-view" class="glass-card">
+        <h1 style="text-align: center; margin-bottom: 0.5rem;">Join Kuis</h1>
+        <p class="subtitle">Masukkan kode kuis dan nama Anda</p>
+        
+        <form id="join-form" onsubmit="event.preventDefault();">
+            <div class="form-group">
+                <label for="room-code-input">Kode Room (4 Huruf)</label>
+                <input type="text" id="room-code-input" class="form-control" maxlength="4" placeholder="ABCD" required style="text-transform: uppercase; text-align: center; font-size: 1.5rem; letter-spacing: 4px; font-weight: 700;">
+            </div>
+            
+            <div class="form-group">
+                <label for="participant-name-input">Nama Anda</label>
+                <input type="text" id="participant-name-input" class="form-control" placeholder="Contoh: Budi Santoso" required maxlength="15">
+            </div>
+            
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;" id="join-btn">Gabung Room</button>
+        </form>
+    </div>
+
+    <!-- WAITING LOBBY VIEW -->
+    <div id="waiting-view" class="glass-card hidden" style="text-align: center;">
+        <h1 id="waiting-room-title">Nama Room</h1>
+        <div class="pulse-timer" style="font-size: 4rem; margin: 2rem 0;">🎮</div>
+        <h2>Selamat Datang, <span id="waiting-client-name" style="color: var(--primary);">User</span>!</h2>
+        <p class="subtitle" style="margin-top: 1rem;">Menunggu Host memulai kuis. Harap tetap di halaman ini...</p>
+    </div>
+
+    <!-- QUIZ INTERACTIVE VIEW -->
+    <div id="quiz-view" class="glass-card wide hidden">
+        <div class="timer-banner">
+            <div>
+                <h3>Pertanyaan <span id="quiz-progress-text" class="progress-number">0/0</span></h3>
+                <p id="quiz-title-running" style="color: var(--text-secondary); font-size: 0.9rem;">Kuis Sedang Berjalan</p>
+            </div>
+            <div class="timer-display pulse-timer">
+                ⏳ <span id="quiz-timer">00</span>s
+            </div>
+        </div>
+        
+        <!-- Question Presentation -->
+        <div class="question-card">
+            <div class="question-text" id="question-text-display">Memuat pertanyaan...</div>
+            
+            <div class="client-options-grid">
+                <button class="quiz-option-btn a" data-option="A">
+                    <span class="option-badge a">A</span>
+                    <span id="opt-text-a">Pilihan A</span>
+                </button>
+                <button class="quiz-option-btn b" data-option="B">
+                    <span class="option-badge b">B</span>
+                    <span id="opt-text-b">Pilihan B</span>
+                </button>
+                <button class="quiz-option-btn c" data-option="C">
+                    <span class="option-badge c">C</span>
+                    <span id="opt-text-c">Pilihan C</span>
+                </button>
+                <button class="quiz-option-btn d" data-option="D">
+                    <span class="option-badge d">D</span>
+                    <span id="opt-text-d">Pilihan D</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- QUIZ SUBMITTED / WAITING OTHERS VIEW -->
+    <div id="submitted-view" class="glass-card hidden" style="text-align: center;">
+        <h1>Jawaban Terkirim!</h1>
+        <div style="font-size: 4rem; margin: 2rem 0;">⌛</div>
+        <p class="subtitle">Anda telah menjawab semua soal. Menunggu kuis selesai untuk melihat hasil akhir...</p>
+    </div>
+
+    <!-- RESULTS VIEW -->
+    <div id="results-view" class="glass-card wide hidden">
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <h1>Kuis Selesai!</h1>
+            <p class="subtitle">Berikut adalah hasil pencapaian Anda</p>
+            <div style="font-size: 2.25rem; font-weight: 800; font-family: var(--font-outfit); color: var(--color-d); background: rgba(16, 185, 129, 0.1); padding: 1rem; border-radius: 16px; display: inline-block;">
+                Skor Anda: <span id="result-score">0</span> Poin
+            </div>
+        </div>
+        
+        <h3 style="margin-bottom: 1rem;">Leaderboard Akhir</h3>
+        <div class="leaderboard-list" id="client-leaderboard-list" style="margin-bottom: 2rem;">
+            <!-- Rank listings -->
+        </div>
+
+        <h3 style="margin-bottom: 1rem;">Ulasan Jawaban Anda</h3>
+        <div id="answers-review-list" style="display: flex; flex-direction: column; gap: 1rem;">
+            <!-- Question reviews -->
+        </div>
+
+        <div class="btn-group-center" style="margin-top: 3rem;">
+            <a href="/" class="btn btn-outline">Kembali ke Menu Utama</a>
+        </div>
+    </div>
+
+    <script src="/static/js/client.js"></script>
+</body>
+</html>
