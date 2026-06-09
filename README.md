@@ -1,1 +1,0 @@
-Tujuan web ini dibuat bertujuan untuk melakukan open kuis setelah sesi implementasi, dan training sudah selesai agar implementator bisa menilai audience sudah memahami tujuan atau materi yang disampaikan.
